@@ -68,8 +68,8 @@
                         <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>
                         </li>
                         <li class="dropdown-divider"></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log
-                                out</a></li>
+                        <li class="nav-link">
+                        <a href="{{route('logout')}}" class="nav-item dropdown-item">Logout</a></li>
                     </ul>
                 </li>
                 <li class="separator d-lg-none"></li>
