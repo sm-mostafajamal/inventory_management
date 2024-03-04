@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ReportAndAnalyticsController;
-use \App\Http\Controllers\LoginController;
+use \App\Http\Controllers\UsersController;
+use \App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,15 @@ use \App\Http\Controllers\LoginController;
 |
 */
 
-Route::match(['get', 'post'],'/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::match(['get', 'post'],'/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::middleware('guest')->prefix('/login')->name('login')->group( function () {
+    Route::get('', [UsersController::class, 'login']);
+    Route::post( '/authentication', [UsersController::class, 'authentication'])->name('.auth');
+});
+
+Route::match(['get', 'post'],'/logout', [UsersController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/', [ ReportAndAnalyticsController::class, 'index' ])->name('home')->middleware('auth');
+
+Route::middleware('auth')->prefix('/product-management')->name('product-management')->group( function () {
+    Route::get('', [ProductsController::class, 'index']);
+});

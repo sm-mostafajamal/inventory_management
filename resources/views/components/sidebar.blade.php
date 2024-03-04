@@ -11,20 +11,19 @@
                 Menu
             </a>
         </div>
-        <ul class="nav">
-            <li class="active ">
-                <a href="#">
+        <ul class="nav" id="side_nav">
+            <li class="active">
+                <a href="{{ route('home') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>Reports & Analytics</p>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li >
+                <a href="{{ route('product-management') }}">
                     <i class="tim-icons icon-atom"></i>
-                    <p>Product Menu</p>
+                    <p>Product Management</p>
                 </a>
             </li>
-
 
             <li>
                 <a href="#">

@@ -1,8 +1,8 @@
 <x-layout>
     <div class="bg-img">
         <div class="content">
-            <header>Login Form</header>
-            <form action="{{ route('login') }}" method="POST">
+            <header>Login</header>
+            <form action="{{ route('login.auth') }}" method="POST">
             @csrf
                 <div class="field">
                     <span class="fa fa-user"></span>
