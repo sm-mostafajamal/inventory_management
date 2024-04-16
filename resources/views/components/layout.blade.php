@@ -17,9 +17,10 @@
     <link href="{{asset('assets')}}/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
+<body>
 <div class="wrapper">
-    <x-sidebar />
-    <x-navbar />
+    <x-sidebar/>
+    <x-navbar/>
     <div class="main-panel">
         {{$slot}}
     </div>
@@ -141,8 +142,18 @@
                 $('body').removeClass('white-content');
             });
         });
+
+
     });
 </script>
+{{--<script>--}}
+{{--    $(function () {--}}
+{{--        $("#side_nav a").on('click', function (e) {--}}
+{{--            console.log($("#side_nav").attr("href"))--}}
+{{--            $("#side_nav").find('li.active').removeClass('active')--}}
+{{--        })--}}
+{{--    })--}}
+{{--</script>--}}
 
 </body>
 </html>

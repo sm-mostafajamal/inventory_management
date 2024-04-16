@@ -5,83 +5,75 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="title">Add Product</h5>
+                            <h2 class="title">Add Product</h2>
                         </div>
                         <div class="card-body">
                             <form>
-                                <div class="row">
-                                    <div class="col-md-5 pr-md-1">
-                                        <div class="form-group">
-                                            <label>Company (disabled)</label>
-                                            <input type="text" class="form-control" disabled="" placeholder="Company"
-                                                   value="Creative Code Inc.">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 px-md-1">
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                   value="michael23">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-md-1">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" placeholder="mike@email.com">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 pr-md-1">
-                                        <div class="form-group">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control" placeholder="Company" value="Mike">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 pl-md-1">
-                                        <div class="form-group">
-                                            <label>Last Name</label>
-                                            <input type="text" class="form-control" placeholder="Last Name"
-                                                   value="Andrew">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Address</label>
-                                            <input type="text" class="form-control" placeholder="Home Address"
-                                                   value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                                        </div>
-                                    </div>
-                                </div>
+                                <h5 class="title">SR Information</h5>
                                 <div class="row">
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
-                                            <label>City</label>
-                                            <input type="text" class="form-control" placeholder="City" value="Mike">
+                                            <label>SR Name</label>
+                                            <input type="text" class="form-control" placeholder="SR Name" name="sr_name" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
-                                            <label>Country</label>
-                                            <input type="text" class="form-control" placeholder="Country"
-                                                   value="Andrew">
+                                            <label>Company Name</label>
+                                            <input type="text" class="form-control" placeholder="Company Name" name="company_name"
+                                                   value="">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-md-1">
                                         <div class="form-group">
-                                            <label>Postal Code</label>
-                                            <input type="number" class="form-control" placeholder="ZIP Code">
+                                            <label for="exampleInputEmail1">Phone Number</label>
+                                            <input type="tel" class="form-control" placeholder="Phone Number" name="phone_number">
                                         </div>
                                     </div>
                                 </div>
+
+                                <h5 class="title">Category</h5>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
+                                        <div class="form-group w-50">
+                                            <label>Product Category</label>
+                                            <input type="text" class="form-control" name="product_category" placeholder="Product Category" value="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="title">Product Information</h5>
+                                <div class="row">
+                                    <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
-                                            <label>About Me</label>
-                                            <textarea rows="4" cols="80" class="form-control"
-                                                      placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                            <label>Product Name</label>
+                                            <input type="text" class="form-control" placeholder="Product Name"
+                                                   name="product_name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-md-1">
+                                        <div class="form-group">
+                                            <label>Product Price</label>
+                                            <input type="text" class="form-control" name="product_price" placeholder="Product Price" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pl-md-1">
+                                        <div class="form-group">
+                                            <label>Product Category</label>
+                                            <select class="form-control">
+                                                <option>Beverages</option>
+                                                <option>Bakery</option>
+                                                <option>Jarred Goods</option>
+                                                <option>Dairy</option>
+                                                <option>Baking Goods</option>
+                                                <option>Frozen Foods</option>
+                                                <option>Meat </option>
+                                                <option>Produce</option>
+                                                <option>Cleaners</option>
+                                                <option>Paper Goods</option>
+                                                <option>Personal Care</option>
+                                                <option>Other</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -102,32 +94,15 @@
                                 <div class="block block-three"></div>
                                 <div class="block block-four"></div>
                                 <a href="javascript:void(0)">
-                                    <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
-                                    <h5 class="title">Mike Andrew</h5>
+                                    <img src="{{ asset('assets') }}/img/anime3.png" alt="..." >
+                                    <h4 class="title" style="margin-top: 1rem">Rice</h4>
                                 </a>
                                 <p class="description">
-                                    Ceo/Co-Founder
+                                    Romoniyo chal
                                 </p>
                             </div>
                             </p>
-                            <div class="card-description">
-                                Do not be scared of the truth because we need to restart the human foundation in truth
-                                And I
-                                love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="button-container">
-                                <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
-                                    <i class="fab fa-facebook"></i>
-                                </button>
-                                <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                                <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
-                                    <i class="fab fa-google-plus"></i>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -135,11 +110,4 @@
         </div>
     </div>
 </x-layout>
-<script>
-    $(function () {
-        $("#side_nav > li").click(function () {
-            $("#side_nav > li").removeClass('active')
-            $(this).addClass("active")
-        })
-    })
-</script>
+
