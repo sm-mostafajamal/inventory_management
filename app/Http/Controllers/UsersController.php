@@ -12,6 +12,11 @@ class UsersController extends Controller
         return view('login.index');
     }
 
+    public function show()
+    {
+        return view('user_management.index');
+    }
+
     public function authentication(Request $request)
     {
         if( Auth::attempt($request->all(['email_phone', 'password'])) )

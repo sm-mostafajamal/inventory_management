@@ -26,7 +26,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{ route('user-management') }}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>User Management</p>
                 </a>

@@ -60,19 +60,19 @@
                                     <div class="col-md-4 pl-md-1">
                                         <div class="form-group">
                                             <label>Product Category</label>
-                                            <select class="form-control">
-                                                <option>Beverages</option>
-                                                <option>Bakery</option>
-                                                <option>Jarred Goods</option>
-                                                <option>Dairy</option>
-                                                <option>Baking Goods</option>
-                                                <option>Frozen Foods</option>
-                                                <option>Meat </option>
-                                                <option>Produce</option>
-                                                <option>Cleaners</option>
-                                                <option>Paper Goods</option>
-                                                <option>Personal Care</option>
-                                                <option>Other</option>
+                                            <select class="form-control" >
+                                                <option class="option">Beverages</option>
+                                                <option class="option">Bakery</option>
+                                                <option class="option">Jarred Goods</option>
+                                                <option class="option">Dairy</option>
+                                                <option class="option">Baking Goods</option>
+                                                <option class="option">Frozen Foods</option>
+                                                <option class="option">Meat </option>
+                                                <option class="option">Produce</option>
+                                                <option class="option">Cleaners</option>
+                                                <option class="option">Paper Goods</option>
+                                                <option class="option">Personal Care</option>
+                                                <option class="option">Other</option>
                                             </select>
                                         </div>
                                     </div>

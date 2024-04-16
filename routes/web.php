@@ -20,10 +20,11 @@ Route::middleware('guest')->prefix('/login')->name('login')->group( function () 
     Route::post( '/authentication', [UsersController::class, 'authentication'])->name('.auth');
 });
 
-Route::match(['get', 'post'],'/logout', [UsersController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/', [ ReportAndAnalyticsController::class, 'index' ])->name('home')->middleware('auth');
 
-Route::middleware('auth')->prefix('/product-management')->name('product-management')->group( function () {
-    Route::get('', [ProductsController::class, 'index']);
+Route::middleware('auth')->prefix('/')->group( function () {
+    Route::get('product-management', [ProductsController::class, 'index'])->name('product-management');
+    Route::get('user-management', [UsersController::class, 'show'])->name('user-management');
+    Route::match(['get', 'post'],'logout', [UsersController::class, 'logout'])->name('logout');
 });

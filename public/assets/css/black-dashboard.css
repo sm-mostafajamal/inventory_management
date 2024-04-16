@@ -20433,3 +20433,15 @@ Copyright (c) 2015 Daniel Eden
     padding-left: 0;
     padding-right: 0;
 }
+
+.option {
+    background-color: #27293D;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#user_edit_header {
+    display: flex;
+    justify-content: space-between;
+}
