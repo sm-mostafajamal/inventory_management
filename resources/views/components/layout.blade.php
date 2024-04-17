@@ -36,7 +36,7 @@
 <script src="{{ asset('assets') }}/js/black-dashboard.min.js?v=1.0.0"></script>
 <script>
     $(document).ready(function () {
-        $().ready(function () {
+        $(document).ready(function () {
             $sidebar = $('.sidebar');
             $navbar = $('.navbar');
             $main_panel = $('.main-panel');

@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ReportAndAnalyticsController;
-use \App\Http\Controllers\UsersController;
-use \App\Http\Controllers\ProductsController;
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,15 +16,17 @@ use \App\Http\Controllers\ProductsController;
 */
 
 Route::middleware('guest')->prefix('/login')->name('login')->group( function () {
-    Route::get('', [UsersController::class, 'login']);
-    Route::post( '/authentication', [UsersController::class, 'authentication'])->name('.auth');
+    Route::get('', [UserController::class, 'login']);
+    Route::post( '/authentication', [UserController::class, 'authentication'])->name('.auth');
 });
 
 
 Route::get('/', [ ReportAndAnalyticsController::class, 'index' ])->name('home')->middleware('auth');
 
 Route::middleware('auth')->prefix('/')->group( function () {
-    Route::get('product-management', [ProductsController::class, 'index'])->name('product-management');
-    Route::get('user-management', [UsersController::class, 'show'])->name('user-management');
-    Route::match(['get', 'post'],'logout', [UsersController::class, 'logout'])->name('logout');
+    Route::get('product-management', [ProductController::class, 'index'])->name('product-management');
+    Route::get('user-management', [UserController::class, 'show'])->name('user-management');
+    Route::post('user-management/update', [UserController::class, 'update'])->name('user-management.update');
+    Route::match(['get', 'post'], 'user-management/add', [UserController::class, 'add'])->name('user-management.add');
+    Route::match(['get', 'post'],'logout', [UserController::class, 'logout'])->name('logout');
 });

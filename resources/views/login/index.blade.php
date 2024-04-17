@@ -26,7 +26,7 @@
                 @csrf
                 <div class="field">
                     <span class="fa fa-user"></span>
-                    <input type="text" name="email_phone" placeholder="Email or Phone">
+                    <input type="text" name="username" placeholder="Username">
                 </div>
                 <div class="field space">
                     <span class="fa fa-lock"></span>
