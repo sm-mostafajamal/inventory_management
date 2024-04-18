@@ -5,7 +5,7 @@
             @if (Session::has('success'))
                 <div class="alert alert-success notification-bar">{{ Session::get('success') }}</div>
             @endif
-            <form method="POST" action="{{ route('user-management.add') }}">
+            <form method="POST" action="{{ route('user-management.add', ['action' => 'create_user']) }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -22,15 +22,21 @@
                                         <div class="form-group">
                                             <label>Full Name</label>
                                             <input type="text" class="form-control" placeholder="Name" name="name"
-                                                   value="">
+                                                   value="{{ old('name') }}" style="border-color: {{$errors->has('name') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
-                                    <div class="col-md-4 px-md-1">
+                                    <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input type="text" class="form-control" placeholder="Email" name="email"
-                                                   value="">
+                                                   value="{{ old('email') }}" style="border-color: {{$errors->has('email') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('email'))
+                                            <div class="error">{{ $errors->first('email') }}</div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -39,16 +45,22 @@
                                         <div class="form-group">
                                             <label>Username</label>
                                             <input type="text" class="form-control" placeholder="username"
-                                                   name="username" value="">
+                                                   name="username" value="{{ old('username') }}" style="border-color: {{$errors->has('username') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('username'))
+                                            <div class="error">{{ $errors->first('usename') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Phone Number</label>
                                             <input type="text" class="form-control" placeholder="phone number"
-                                                   name="phone" value="">
+                                                   name="phone" value="{{ old('phone') }}" style="border-color: {{$errors->has('phone') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('phone'))
+                                            <div class="error">{{ $errors->first('phone') }}</div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -57,16 +69,22 @@
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" placeholder="password"
-                                                   name="password" value="">
+                                                   name="password" value="" style="border-color: {{$errors->has('password') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('password'))
+                                            <div class="error">{{ $errors->first('password') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
                                             <input type="password" class="form-control" placeholder="confirm password"
-                                                   name="confirm_password" value="">
+                                                   name="confirm_password" value="" style="border-color: {{$errors->has('confirm_password') ? 'red' : '' }}">
                                         </div>
+                                        @if($errors->has('confirm_password'))
+                                            <div class="error">{{ $errors->first('confirm_password') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

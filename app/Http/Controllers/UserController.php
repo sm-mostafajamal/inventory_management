@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -30,23 +31,40 @@ class UserController extends Controller
 
     public function add(Request $request, User $user)
     {
-        $input = $request->except('_token');
+        try {
+            $input = $request->except('_token');
 
-        $rules = [
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|min:8|same:password',
-        ];
+            if (!empty($input['action']) && $input['action'] == 'create_user') {
+                $rules = [
+                    'name' => 'required|string',
+                    'email' => 'sometimes|email',
+                    'username' => 'required|min:6|unique:users,username',
+                    'phone' => 'required|min:11',
+                    'password' => 'required|min:4',
+                    'confirm_password' => 'required|min:4|same:password',
+                ];
 
-        $messages = [
-            'password_confirmation.same' => 'Password Confirmation should match the Password',
-        ];
+                $messages = [
+                    'confirm_password.same' => 'Password Confirmation should match the Password',
+                ];
 
-        $validator = Validator::make($input, $rules, $messages);
+                $validator = Validator::make($input, $rules, $messages);
 
-        if ($validator->fails()) {
-        dd($validator->messages());
-//            return redirect()->back()->withInput()->withErrors($validator->messages());
+                if ($validator->fails()) {
+                    return redirect()->back()->withInput()->withErrors($validator->errors());
+                }
+
+                $input['password'] = Hash::make($input['password']);
+                $user->addNewUser($input);
+                return redirect()->back()->with(['success' => 'User Created Successfully']);
+
+            }
+        } catch (\Throwable $th) {
+            $th->getMessage();
+            return redirect()->back();
         }
+
+
         return view('user_management.add_user');
 
     }
