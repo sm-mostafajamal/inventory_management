@@ -1,4 +1,7 @@
-<x-layout>
+@extends('layouts.main')
+@section('content')
+    <x-sidebar data="product_management" />
+
     <div class="main-panel">
         <div class="content">
             <div class="row">
@@ -109,5 +112,4 @@
             </div>
         </div>
     </div>
-</x-layout>
-
+@endsection

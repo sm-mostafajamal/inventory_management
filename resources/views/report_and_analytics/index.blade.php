@@ -1,4 +1,8 @@
-<x-layout>
+@extends('layouts.main')
+
+@section('content')
+    <x-sidebar data="report_and_analytics" />
+
     <div class="content">
         <div class="row">
             <div class="col-12">
@@ -387,5 +391,5 @@
             </div>
         </div>
     </div>
-</x-layout>
+@endsection
 

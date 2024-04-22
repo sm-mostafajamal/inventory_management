@@ -16,25 +16,30 @@
     <!-- CSS Files -->
     <link href="{{asset('assets')}}/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
+    <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
+    <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
+    <!--   Core JS Files   -->
+
+    <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('assets') }}/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{ asset('assets') }}/js/black-dashboard.min.js?v=1.0.0"></script>
 </head>
 <body>
 <div class="wrapper">
-    <x-sidebar/>
     <x-navbar/>
     <div class="main-panel">
-        {{$slot}}
+
+        @yield('content')
+
     </div>
 </div>
-<!--   Core JS Files   -->
-<script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
-<script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
-<script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
-<script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="{{ asset('assets') }}/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset('assets') }}/js/black-dashboard.min.js?v=1.0.0"></script>
+
 <script>
+
     $(document).ready(function () {
         $(document).ready(function () {
             $sidebar = $('.sidebar');
@@ -143,17 +148,13 @@
             });
         });
 
+        setTimeout(function () {
+            $('.notification-bar').fadeOut()
+        }, 3000)
 
     });
+
 </script>
-{{--<script>--}}
-{{--    $(function () {--}}
-{{--        $("#side_nav a").on('click', function (e) {--}}
-{{--            console.log($("#side_nav").attr("href"))--}}
-{{--            $("#side_nav").find('li.active').removeClass('active')--}}
-{{--        })--}}
-{{--    })--}}
-{{--</script>--}}
 
 </body>
 </html>

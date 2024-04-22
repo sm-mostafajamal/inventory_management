@@ -1,7 +1,10 @@
-<x-layout>
+@extends('layouts.main')
+
+@section('content')
+    <x-sidebar data="user_management" />
+
     <div class="main-panel">
         <div class="content">
-
             @if (Session::has('success'))
                 <div class="alert alert-success notification-bar">{{ Session::get('success') }}</div>
             @endif
@@ -83,12 +86,5 @@
 
         </div>
     </div>
-</x-layout>
+@endsection
 
-<script>
-    $(function () {
-        setTimeout(function () {
-            $('.notification-bar').fadeOut()
-        }, 3000)
-    })
-</script>

@@ -1,4 +1,7 @@
-<x-layout>
+@extends('layouts.main')
+
+@section('content')
+    <x-sidebar data="user_management" />
     <div class="main-panel">
         <div class="content">
 
@@ -117,12 +120,6 @@
 
         </div>
     </div>
-</x-layout>
+@endsection
 
-<script>
-    $(function () {
-        setTimeout(function () {
-            $('.notification-bar').fadeOut()
-        }, 3000)
-    })
-</script>
+

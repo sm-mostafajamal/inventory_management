@@ -12,43 +12,41 @@
             </a>
         </div>
         <ul class="nav" id="side_nav">
-            <li class="active">
+            <li id="report_and_analytics">
                 <a href="{{ route('home') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>Reports & Analytics</p>
                 </a>
             </li>
-            <li >
+            <li id="product_management">
                 <a href="{{ route('product-management') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>Product Management</p>
                 </a>
             </li>
-
-            <li>
+            <li id="user_management">
                 <a href="{{ route('user-management') }}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>User Management</p>
                 </a>
             </li>
-            <li>
+            <li id="sales">
                 <a href="#">
                     <i class="tim-icons icon-puzzle-10"></i>
-                    <p>Sales</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="tim-icons icon-align-center"></i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="tim-icons icon-world"></i>
                     <p>Sales</p>
                 </a>
             </li>
         </ul>
     </div>
 </div>
+
+
+<script>
+    $(function () {
+        active_nav = "{{ $data ?? '' }}";
+        $("#" + active_nav).addClass('active');
+    })
+</script>
+
+
+
