@@ -35,16 +35,6 @@
                                     </div>
                                 </div>
 
-                                <h5 class="title">Category</h5>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group w-50">
-                                            <label>Product Category</label>
-                                            <input type="text" class="form-control" name="product_category" placeholder="Product Category" value="">
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <h5 class="title">Product Information</h5>
                                 <div class="row">
                                     <div class="col-md-4 pr-md-1">
