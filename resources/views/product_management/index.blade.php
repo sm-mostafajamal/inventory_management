@@ -13,32 +13,48 @@
                                 <input type="button" value="Add New Product" class="btn btn-fill btn-primary">
                             </a>
                         </div>
-                        <div>
-                            <table class="table">
-                                <thead>
+                        <table class="table col-md-12">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="text-center"></th>
+                                <th scope="col" class="text-center">Image</th>
+                                <th scope="col" class="text-center">Product Name</th>
+                                <th scope="col" class="text-center">Category</th>
+                                <th scope="col" class="text-center">Quantity</th>
+                                <th scope="col" class="text-center">Company Name</th>
+                                <th scope="col" class="text-center"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($products as $product)
                                 <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Company Name</th>
-                                    <th scope="col"></th>
+                                    <td class="text-center">
+                                        <button class="btn">Details</button>
+                                    </td>
+                                    <td class="text-center">
+                                        <img src="{{  asset('assets/img'). '/' .$product->image }}" style="width: 100px" />
+                                    </td>
+                                    <td class="text-center">{{ $product->product_name }}</td>
+                                    <td class="text-center">{{ $product->category }}</td>
+                                    <td class="text-center">{{ $product->quantity }}</td>
+                                    <td class="text-center">{{ $product->sr_company }}</td>
+                                    <td class="text-center">
+                                        <span class="mx-2">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        </span>
+                                        <span class="mx-2">
+                                        <i class="fa-solid fa-trash"></i>
+                                        </span>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
+                            @empty
+                                <tr class="text-center">
+                                    <td colspan="8">No data found!!!</td>
                                 </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            @endforelse
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

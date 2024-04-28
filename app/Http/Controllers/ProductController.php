@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     //
-    public function index()
+    public function index(Product $product)
     {
-        return view('product_management.index');
+        $data['products'] = $product->getAll();
+        return view('product_management.index', $data);
     }
 
     public function create(Request $request, Product $product)
     {
         if($request->isMethod('POST')) {
-         $rules = [
+            $rules = [
                     'sr_name' => 'required|string|max:100',
                     'sr_company' => 'required|string|max:100',
                     'sr_phone' => 'sometimes|min:11',
@@ -26,6 +27,7 @@ class ProductController extends Controller
                     'price' => 'required|numeric|min:0',
                     'quantity' => 'required|numeric|min:0',
                     'category' => 'required|string|max:100',
+                    'photo' => 'sometimes|image|mimes:png,jpg,jpeg|max:2048'
                 ];
 
                 $validator = Validator::make($request->all(), $rules);
@@ -33,8 +35,10 @@ class ProductController extends Controller
                 if ($validator->fails()) {
                     return redirect()->back()->withInput()->withErrors($validator->errors());
                 }
-
-            $product->insertData($request->all());
+            $filename = time() . '.' . $request->photo?->extension();
+            $request->photo->move(public_path( 'assets/img/'), $filename);
+            $request['image'] = $filename;
+            $product->insertData($request->except('photo'));
             return redirect()->back()->withSuccess('Successfully added');
         }
         return view('product_management.add_product');
