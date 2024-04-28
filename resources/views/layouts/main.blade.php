@@ -16,8 +16,8 @@
     <!-- CSS Files -->
     <link href="{{asset('assets')}}/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
     <!--   Core JS Files   -->
@@ -39,7 +39,6 @@
 </div>
 
 <script>
-
     $(document).ready(function () {
         $(document).ready(function () {
             $sidebar = $('.sidebar');

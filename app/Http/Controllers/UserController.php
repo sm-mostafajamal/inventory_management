@@ -34,7 +34,7 @@ class UserController extends Controller
         try {
             $input = $request->except('_token');
 
-            if (!empty($input['action']) && $input['action'] == 'create_user') {
+            if ($request->isMethod('POST')) {
                 $rules = [
                     'name' => 'required|string',
                     'email' => 'sometimes|email',

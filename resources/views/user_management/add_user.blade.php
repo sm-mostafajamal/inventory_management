@@ -8,7 +8,7 @@
             @if (Session::has('success'))
                 <div class="alert alert-success notification-bar">{{ Session::get('success') }}</div>
             @endif
-            <form method="POST" action="{{ route('user-management.add', ['action' => 'create_user']) }}">
+            <form method="POST" action="{{ route('user-management.add') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">

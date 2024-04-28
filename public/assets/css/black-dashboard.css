@@ -20441,7 +20441,7 @@ Copyright (c) 2015 Daniel Eden
     border: 0;
 }
 
-#user_edit_header {
+.button-header {
     display: flex;
     justify-content: space-between;
 }

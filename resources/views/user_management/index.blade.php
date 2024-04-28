@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header" id="user_edit_header">
+                            <div class="card-header button-header">
                                 <h2 class="title">User Information <span> < Edit >  </span></h2>
                                 <a href="{{ route('user-management.add') }}" >
                                     <input type="button" value="Add user" class="btn btn-fill btn-primary">
