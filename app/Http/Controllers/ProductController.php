@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     //
-    public function index(Product $product)
+    public function index(Request $request, Product $product)
     {
         $data['products'] = $product->getAll();
+        if($request->isMethod('POST') && $request?->action == 'delete') {
+            dd($request);
+        }
         return view('product_management.index', $data);
     }
 

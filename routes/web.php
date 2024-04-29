@@ -24,7 +24,7 @@ Route::middleware('guest')->prefix('/login')->name('login')->group( function () 
 Route::get('/', [ ReportAndAnalyticsController::class, 'index' ])->name('home')->middleware('auth');
 
 Route::middleware('auth')->prefix('/')->group( function () {
-    Route::get('product-management', [ProductController::class, 'index'])->name('product-management');
+    Route::match(['get', 'post'], 'product-management', [ProductController::class, 'index'])->name('product-management');
     Route::match(['get', 'post'],'product-management/add', [ProductController::class, 'create'])->name('product.add');
 
     Route::get('user-management', [UserController::class, 'show'])->name('user-management');
