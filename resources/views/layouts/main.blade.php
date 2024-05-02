@@ -3,32 +3,30 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets')}}/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{asset('assets')}}/img/favicon.png">
     <title>
         Inverntory Management
     </title>
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Nucleo Icons -->
-    <link href="{{asset('assets')}}/css/nucleo-icons.css" rel="stylesheet"/>
+    <link  rel="stylesheet" href="{{asset('assets/css/nucleo-icons.css')}}"/>
     <!-- CSS Files -->
-    <link href="{{asset('assets')}}/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
+    <link  rel="stylesheet" href="{{asset('assets/css/black-dashboard.css')}}?v=1.0.0"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
-    <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
     <!--   Core JS Files   -->
-
-    <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!--  Notifications Plugin    -->
-    <script src="{{ asset('assets') }}/js/plugins/bootstrap-notify.js"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('assets') }}/js/black-dashboard.min.js?v=1.0.0"></script>
+    <script src="{{ asset('assets/js/black-dashboard.min.js') }}?v=1.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -36,10 +34,9 @@
     <div class="main-panel">
 
         @yield('content')
-
     </div>
 </div>
-
+@stack('scripts')
 <script>
     $(document).ready(function () {
         $(document).ready(function () {

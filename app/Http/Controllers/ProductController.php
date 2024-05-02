@@ -14,7 +14,10 @@ class ProductController extends Controller
     {
         $data['products'] = $product->getAll();
         if($request->isMethod('POST') && $request?->action == 'delete') {
-            dd($request);
+            if(!empty($request->product_id)) {
+                $product->deleteById($request->product_id);
+                return redirect()->back()->with('success', 'Product has been deleted.');
+            }
         }
         return view('product_management.index', $data);
     }

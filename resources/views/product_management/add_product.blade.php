@@ -4,13 +4,7 @@
 
     <div class="main-panel">
         <div class="content">
-            @if (session('success'))
-                <div class="alert alert-success notification-bar">{{ session('success') }}</div>
-            @elseif($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger notification-bar">{{ $error }}</div>
-                @endforeach
-            @endif
+            <x-notification />
             <form method="POST" action="{{ route('product.add') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -29,7 +23,7 @@
                                         <div class="form-group">
                                             <label>SR Name</label>
                                             <input type="text" class="form-control" placeholder="SR Name" name="sr_name"
-                                                   value="">
+                                                   value="{{ old('sr_name') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
@@ -37,14 +31,14 @@
                                             <label>Company Name</label>
                                             <input type="text" class="form-control" placeholder="Company Name"
                                                    name="sr_company"
-                                                   value="">
+                                                   value="{{ old('sr_company') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pl-md-1">
                                         <div class="form-group">
                                             <label>Phone Number</label>
                                             <input type="tel" class="form-control" placeholder="Phone Number"
-                                                   name="sr_phone">
+                                                   name="sr_phone" value="{{ old('sr_phone') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -55,27 +49,28 @@
                                         <div class="form-group">
                                             <label>Product Name</label>
                                             <input type="text" class="form-control" placeholder="Product Name"
-                                                   name="product_name" id="product_name" value="">
+                                                   name="product_name" id="product_name" value="{{ old('product_name') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Price</label>
                                             <input type="text" class="form-control" name="price"
-                                                   placeholder="Product Price" value="">
+                                                   placeholder="Product Price" value="{{ old('price') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Quantity</label>
                                             <input type="text" class="form-control" name="quantity"
-                                                   placeholder="Product Quantity" value="">
+                                                   placeholder="Product Quantity" value="{{ old('quantity') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Product Category</label>
-                                            <select class="form-control" id="select_product">
+                                            <select class="form-control" id="select_product" required>
+                                                <option selected disabled>choose</option>
                                                 <option class="option" value="beverages">Beverages</option>
                                                 <option class="option" value="bakery">Bakery</option>
                                                 <option class="option" value="jarred">Jarred Goods</option>

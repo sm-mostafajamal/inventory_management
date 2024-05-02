@@ -19,4 +19,9 @@ class Product extends Model
     {
         return self::create($data);
     }
+
+    public function deleteById($id)
+    {
+        return self::where('id', $id)->delete();
+    }
 }
