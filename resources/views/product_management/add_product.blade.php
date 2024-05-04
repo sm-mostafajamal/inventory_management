@@ -55,7 +55,7 @@
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Price</label>
-                                            <input type="text" class="form-control" name="price"
+                                            <input type="text" class="form-control" name="price" id="product_price"
                                                    placeholder="Product Price" value="{{ old('price') }}">
                                         </div>
                                     </div>
@@ -68,21 +68,19 @@
                                     </div>
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
+                                            <label>Total Price</label>
+                                            <input type="text" class="form-control" id="total_price"
+                                                   placeholder="Total Price" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pr-md-1">
+                                        <div class="form-group">
                                             <label>Product Category</label>
                                             <select class="form-control" id="select_product" required>
                                                 <option selected disabled>choose</option>
-                                                <option class="option" value="beverages">Beverages</option>
-                                                <option class="option" value="bakery">Bakery</option>
-                                                <option class="option" value="jarred">Jarred Goods</option>
-                                                <option class="option" value="dairy">Dairy</option>
-                                                <option class="option" value="baking">Baking Goods</option>
-                                                <option class="option" value="frozen">Frozen Foods</option>
-                                                <option class="option" value="meat">Meat</option>
-                                                <option class="option" value="produce">Produce</option>
-                                                <option class="option" value="cleaners">Cleaners</option>
-                                                <option class="option" value="paper_goods">Paper Goods</option>
-                                                <option class="option" value="personal_care">Personal Care</option>
-                                                <option class="option" value="others">Others</option>
+                                                @foreach($product_categories as $category => $v)
+                                                    <option class="option" value="{{ $v  }}">{{$category}}</option>
+                                                @endforeach
                                             </select>
                                             <input type="hidden" name="category" id="product_category">
                                         </div>
@@ -107,6 +105,7 @@
                                         <img src="{{ asset('assets') }}/img/upload2.png" id="upload_img" style="width: 150px">
                                         <input type="file" name="photo" id="product_img" style="display: none;" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
                                         <h4 class="title" style="margin-top: 1rem" id="product_title"></h4>
+                                        <h4 class="title" style="margin-top: 1rem" id="price"></h4>
                                     </a>
                                 </div>
                                 </p>
@@ -124,8 +123,8 @@
     $(() => {
         $('#select_product').on('change', (e) => $('#product_category').val(e.currentTarget.value))
         $("#upload_img").click(() => $("#product_img").click() )
-        $("#product_title").text($('#product_name').val())
         $('#product_name').on('keyup', (e) => $("#product_title").text(e.currentTarget.value) )
+        $('#product_price').on('keyup', (e) => $("#price").text(e.currentTarget.value + ' tk') )
 
         $("#product_img").change((e) => {
             e.preventDefault();

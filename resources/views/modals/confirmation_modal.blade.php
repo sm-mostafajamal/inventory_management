@@ -1,9 +1,9 @@
 <!-- Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirm_modal" aria-hidden="true">
+<div class="modal fade " id="confirmModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Are you sure you want to delete the item?</h5>
+        <h4 class="modal-title">Are you sure you want to delete the item?</h4>
       </div>
       <div class="modal-body">
 

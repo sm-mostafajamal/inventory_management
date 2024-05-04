@@ -20445,3 +20445,18 @@ Copyright (c) 2015 Daniel Eden
     display: flex;
     justify-content: space-between;
 }
+
+.icons {
+    cursor: pointer;
+}
+.modal-content {
+    background: #344675;
+    background-image: -webkit-linear-gradient( 0deg, #344675 0%, #263148 100%);
+    background-image: -o-linear-gradient(0deg, #344675 0%, #263148 100%);
+    background-image: -moz-linear-gradient(0deg, #344675 0%, #263148 100%);
+    background-image: linear-gradient(0deg, #344675 0%, #263148 100%);
+}
+.modal-title, label {
+    color: white !important;
+
+}

@@ -11,6 +11,21 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = [];
 
+    public $product_category = [
+        "Beverages" => "beverages",
+        "Bakery" => "bakery",
+        "Jarred Goods" => "jarred",
+        "Dairy" => "dairy",
+        "Baking Goods" => "baking",
+        "Frozen Foods" => "frozen",
+        "Meat" => "meat",
+        "Produce" => "produce",
+        "Cleaners" => "cleaners",
+        "Paper Goods" => "paper_goods",
+        "Personal Care" => "personal_care",
+        "Others" => "others",
+    ];
+
     public function getAll()
     {
         return self::all();
@@ -23,5 +38,14 @@ class Product extends Model
     public function deleteById($id)
     {
         return self::where('id', $id)->delete();
+    }
+
+    public function getById($id)
+    {
+        return self::where('id', $id)->first();
+    }
+    public function updateData($id, $data)
+    {
+        return self::where('id', $id)->update($data);
     }
 }

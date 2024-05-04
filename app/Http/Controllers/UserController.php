@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     public function login()
     {
         return view('login.index');
@@ -73,8 +74,10 @@ class UserController extends Controller
     {
         if (Auth::attempt($request->all(['username', 'password']))) {
             $request->session()->regenerate();
-            return redirect('/')->with('success', 'Logged In');
+            return redirect('/');
         }
+
+        return redirect()->back()->withErrors('Invalid Username or Password!!!');
     }
 
     public function logout()

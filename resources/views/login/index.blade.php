@@ -21,6 +21,7 @@
 <div class="wrapper">
     <div class="bg-img">
         <div class="content">
+            <x-notification />
             <header>Login</header>
             <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
