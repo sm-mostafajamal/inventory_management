@@ -20,7 +20,7 @@
             </li>
             <li id="product_management">
                 <a href="{{ route('product-management') }}">
-                    <i class="tim-icons icon-atom"></i>
+                    <i class="fa-brands fa-product-hunt"></i>
                     <p>Product Management</p>
                 </a>
             </li>
@@ -32,8 +32,14 @@
             </li>
             <li id="sales">
                 <a href="#">
-                    <i class="tim-icons icon-puzzle-10"></i>
+                    <i class="fa-solid fa-dollar-sign"></i>
                     <p>Sales</p>
+                </a>
+            </li>
+            <li id="order_product">
+                <a href="{{ route('order-product') }}">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <p>Order Product</p>
                 </a>
             </li>
         </ul>

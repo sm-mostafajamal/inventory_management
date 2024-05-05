@@ -28,6 +28,7 @@
                                     <th scope="col" class="text-center">Product Name</th>
                                     <th scope="col" class="text-center">Per Product Price</th>
                                     <th scope="col" class="text-center">Quantity</th>
+                                    <th scope="col" class="text-center">Total Price</th>
                                     <th scope="col" class="text-center">Category</th>
                                     <th scope="col" class="text-center">SR Name</th>
                                     <th scope="col" class="text-center">SR Number</th>
@@ -55,12 +56,13 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <img src="{{  asset('assets/img').'/'. $product->image }}"
+                                            <img src="{{ !empty($product->image) ? asset('assets/img/' . $product->image) : asset('assets/img/no_img.png') }}"
                                                  style="width: 100px"/>
                                         </td>
                                         <td class="text-center">{{ $product->product_name }}</td>
                                         <td class="text-center">{{ $product->price }}</td>
                                         <td class="text-center">{{ $product->quantity }}</td>
+                                        <td class="text-center">{{ $product->total }}</td>
                                         <td class="text-center">{{ $product->category }}</td>
                                         <td class="text-center">{{ $product->sr_name }}</td>
                                         <td class="text-center">{{ $product->sr_phone }}</td>
@@ -86,6 +88,7 @@
 
     <script>
         $(() => {
+
             $('.delete_product_icon').click((e) => {
                 $('#action').val('delete')
                 $('#confirm_btn').click(() => {
@@ -95,15 +98,24 @@
 
             })
 
+            $('.quantity, .price').on('keyup', (e) => {
+                product_price = $(".price").val();
+                product_quantity = $(".quantity").val();
+                $('.total').val(product_price * product_quantity);
+                $('.total_price').val(product_price * product_quantity);
+            })
+
             $(".edit_product_icon").click(function (e) {
                 product = $(e.currentTarget).data('product');
+
                 $('#product_id').val(product.id);
                 $('#sr_name').val(product.sr_name);
                 $('#sr_company').val(product.sr_company)
                 $('#sr_phone').val(product.sr_phone)
                 $('#product_name').val(product.product_name)
-                $('#price').val(product.price)
-                $('#quantity').val(product.quantity)
+                $('.price').val(product.price)
+                $('.quantity').val(product.quantity)
+                $('.total').val(product.total)
                 $('#' + product.category).val(product.category).prop('selected', true)
 
 
@@ -115,8 +127,9 @@
                         sr_company: $('#sr_company').val(),
                         sr_phone: $('#sr_phone').val(),
                         product_name: $('#product_name').val(),
-                        price: $('#price').val(),
-                        quantity: $('#quantity').val(),
+                        price: $('.price').val(),
+                        quantity: $('.quantity').val(),
+                        total: $('.total_price').val(),
                         category: $('#select_product').find(":selected").val()
                     }
                     $.ajax({
@@ -131,7 +144,6 @@
                     });
                 });
             });
-
 
         })
 

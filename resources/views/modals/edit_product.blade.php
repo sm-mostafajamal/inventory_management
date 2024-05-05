@@ -13,8 +13,7 @@
                            class="form-control"
                            placeholder="SR Name"
                            id="sr_name"
-                           name="sr_name"
-                    >
+                           name="sr_name">
                 </div>
                 <div class="form-group">
                     <label>Company Name</label>
@@ -22,8 +21,7 @@
                            class="form-control"
                            placeholder="Company Name"
                            id="sr_company"
-                           name="sr_company"
-                    >
+                           name="sr_company">
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
@@ -31,8 +29,7 @@
                            class="form-control"
                            placeholder="Phone Number"
                            id="sr_phone"
-                           name="sr_phone"
-                    >
+                           name="sr_phone">
                 </div>
                 <div class="form-group">
                     <label>Product Name</label>
@@ -40,35 +37,29 @@
                            class="form-control"
                            placeholder="Product Name"
                            name="product_name"
-                           id="product_name"
-                    >
+                           id="product_name">
                 </div>
                 <div class="form-group">
                     <label>Product Price</label>
                     <input type="text"
-                           class="form-control"
-                           id="price"
+                           class="form-control price"
                            name="price"
-                           placeholder="Product Price"
-                    >
+                           placeholder="Product Price">
                 </div>
                 <div class="form-group">
                     <label>Product Quantity</label>
                     <input type="text"
-                           class="form-control"
-                           id="quantity"
+                           class="form-control quantity"
                            name="quantity"
-                           placeholder="Product Quantity"
-                    >
+                           placeholder="Product Quantity">
                 </div>
                 <div class="form-group">
                     <label>Total Price</label>
                     <input type="text"
-                           class="form-control"
-                           id="total_price"
+                           class="form-control total"
                            name="total_price"
-                           placeholder="Total Price"
-                    >
+                           placeholder="Total Price" disabled>
+                    <input type="hidden" class="total_price" name="total">
                 </div>
                 <div class="form-group">
                     <label>Product Category</label>

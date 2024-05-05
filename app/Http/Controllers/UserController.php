@@ -25,7 +25,8 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $input = $request->except('_token');
+        $input = $request->except(['_token', 'photo']);
+        $input['image'] = $this->uploadImage($request) ?? "";
         $user->updateByUserId(\auth()->id(), $input);
         return redirect()->back()->with(['success' => 'Updated Successfully']);
     }
@@ -56,6 +57,7 @@ class UserController extends Controller
                 }
 
                 $input['password'] = Hash::make($input['password']);
+                $input['image'] = $this->uploadImage($request);
                 $user->addNewUser($input);
                 return redirect()->back()->with(['success' => 'User Created Successfully']);
 
@@ -86,6 +88,15 @@ class UserController extends Controller
         session()->invalidate();
         session()->regenerateToken();
         return redirect(route('login'));
+    }
+
+    public function uploadImage($request)
+    {
+        if ($request->hasFile('photo')) {
+            $filename = time() . '.' . $request->photo?->extension();
+            $request->photo->move(public_path('assets/img/'), $filename);
+            return $filename;
+        }
     }
 
 }

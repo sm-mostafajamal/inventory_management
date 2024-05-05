@@ -4,11 +4,8 @@
     <x-sidebar data="user_management" />
     <div class="main-panel">
         <div class="content">
-
-            @if (Session::has('success'))
-                <div class="alert alert-success notification-bar">{{ Session::get('success') }}</div>
-            @endif
-            <form method="POST" action="{{ route('user-management.add') }}">
+            <x-notification />
+            <form method="POST" action="{{ route('user-management.add') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">
@@ -106,8 +103,12 @@
                                     <div class="block block-three"></div>
                                     <div class="block block-four"></div>
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('assets') }}/img/anime3.png" alt="...">
+
+                                        <img src="{{ asset('assets/img/anime3.png') }}" class="upload_profile_pic" style="width: 150px">
+
+                                        <input type="file" name="photo" class="user_img" style="display: none;" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
                                         <h4 class="title" style="margin-top: 1rem"></h4>
+
                                     </a>
 
                                 </div>
@@ -120,6 +121,22 @@
 
         </div>
     </div>
+
+     <script>
+        $(() => {
+
+            $(".upload_profile_pic").click(() => $(".user_img").click() )
+
+           $(".user_img").change((e) => {
+                e.preventDefault();
+                let img = $(".user_img").prop("files");
+                if (img.length > 0) {
+                    $(".upload_profile_pic").attr('src', URL.createObjectURL(img[0]));
+                }
+            })
+
+        })
+    </script>
 @endsection
 
 

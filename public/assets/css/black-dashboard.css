@@ -17325,7 +17325,7 @@ table.tablesorter thead tr .headerSortDown {
     background: -moz-linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
     background: linear-gradient(0deg, #ba54f5 0%, #e14eca 100%);
     background: #344675;
-    background-image: -webkit-linear-gradient( 0deg, #344675 0%, #263148 100%);
+    background-image: -webkit-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: -o-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: -moz-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: linear-gradient(0deg, #344675 0%, #263148 100%);
@@ -20449,14 +20449,33 @@ Copyright (c) 2015 Daniel Eden
 .icons {
     cursor: pointer;
 }
+
 .modal-content {
     background: #344675;
-    background-image: -webkit-linear-gradient( 0deg, #344675 0%, #263148 100%);
+    background-image: -webkit-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: -o-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: -moz-linear-gradient(0deg, #344675 0%, #263148 100%);
     background-image: linear-gradient(0deg, #344675 0%, #263148 100%);
 }
+
 .modal-title, label {
     color: white !important;
 
 }
+
+.total {
+    color: #a4a4a4 !important;
+    font-size: 1rem;
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+/*body {*/
+/*    background: #00B4DB;*/
+/*    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);*/
+/*    background: linear-gradient(to right, #0083B0, #00B4DB);*/
+/*    color: #514B64;*/
+/*    min-height: 100vh*/
+/*}*/

@@ -55,22 +55,24 @@
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Price</label>
-                                            <input type="text" class="form-control" name="price" id="product_price"
-                                                   placeholder="Product Price" value="{{ old('price') }}">
+                                            <input type="text" class="form-control price" name="price" id="product_price"
+                                                   placeholder="Product Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Quantity</label>
-                                            <input type="text" class="form-control" name="quantity"
-                                                   placeholder="Product Quantity" value="{{ old('quantity') }}">
+                                            <input type="text" class="form-control quantity" name="quantity" id="product_quantity"
+                                                   placeholder="Product Quantity">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Total Price</label>
-                                            <input type="text" class="form-control" id="total_price"
+                                            <input type="text" class="form-control total" name="total"
                                                    placeholder="Total Price" disabled>
+
+                                            <input type="hidden" class="total_price" name="total">
                                         </div>
                                     </div>
                                     <div class="col-md-4 pr-md-1">
@@ -79,7 +81,7 @@
                                             <select class="form-control" id="select_product" required>
                                                 <option selected disabled>choose</option>
                                                 @foreach($product_categories as $category => $v)
-                                                    <option class="option" value="{{ $v  }}">{{$category}}</option>
+                                                    <option class="option" value="{{ $v }}">{{$category}}</option>
                                                 @endforeach
                                             </select>
                                             <input type="hidden" name="category" id="product_category">
@@ -119,23 +121,31 @@
     </div>
 
 
-<script>
-    $(() => {
-        $('#select_product').on('change', (e) => $('#product_category').val(e.currentTarget.value))
-        $("#upload_img").click(() => $("#product_img").click() )
-        $('#product_name').on('keyup', (e) => $("#product_title").text(e.currentTarget.value) )
-        $('#product_price').on('keyup', (e) => $("#price").text(e.currentTarget.value + ' tk') )
+    <script>
+        $(() => {
 
-        $("#product_img").change((e) => {
-            e.preventDefault();
-            let img = $("#product_img").prop("files");
-            if (img.length > 0) {
-                $("#upload_img").attr('src', URL.createObjectURL(img[0]));
-            }
+            $('#select_product').on('change', (e) => $('#product_category').val(e.currentTarget.value))
+            $("#upload_img").click(() => $("#product_img").click() )
+            $('#product_name').on('keyup', (e) => $("#product_title").text(e.currentTarget.value) )
+            $('.price').on('keyup', (e) => $("#price").text(e.currentTarget.value + ' tk') )
+
+            $('.quantity, .price').on('keyup', () => {
+                product_price = $(".price").val();
+                product_quantity = $(".quantity").val();
+                $('.total').val(product_price * product_quantity);
+                $('.total_price').val(product_price * product_quantity);
+            })
+
+            $("#product_img").change((e) => {
+                e.preventDefault();
+                let img = $("#product_img").prop("files");
+                if (img.length > 0) {
+                    $("#upload_img").attr('src', URL.createObjectURL(img[0]));
+                }
+            })
+
         })
-
-    })
-</script>
+    </script>
 
 @endsection
 

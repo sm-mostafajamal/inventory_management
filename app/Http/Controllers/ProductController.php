@@ -50,6 +50,7 @@ class ProductController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator->errors());
             }
+
             if ($request->hasFile('photo')) {
                 $filename = time() . '.' . $request->photo?->extension();
                 $request->photo->move(public_path('assets/img/'), $filename);
