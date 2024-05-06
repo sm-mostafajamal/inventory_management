@@ -10,7 +10,9 @@ class OrderProductController extends Controller
     public function index(Request $request)
     {
         $data["products"] = (new Product())->getAll();
-
+        if($request->ajax()){
+            dd($request->all());
+        }
         return view('order_product.index', $data);
     }
 

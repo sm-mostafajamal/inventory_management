@@ -22,7 +22,9 @@
                                                         multiple>
                                                     @foreach($products as $product)
                                                         <option
-                                                            value="{{ $product->id }}">{{ $product->product_name}}</option>
+                                                            value="{{ $product }}">
+                                                            {{ $product->product_name}}
+                                                        </option>
                                                     @endforeach
 
                                                 </select>
@@ -113,14 +115,16 @@
             });
 
             $("#choices-multiple-remove-button").change(() => {
-                $.ajax({
-                url: "{{ route('order-product') }}",
-                data: {
-                    product_id : $("#choices-multiple-remove-button").val()
-                },
-                success: function (result) {
-                }
-            });
+            selected = $("#choices-multiple-remove-button").find('selected')
+            console.log(selected)
+            {{--    $.ajax({--}}
+            {{--    url: "{{ route('order-product') }}",--}}
+            {{--    data: {--}}
+            {{--        product_id : $("#choices-multiple-remove-button").val()--}}
+            {{--    },--}}
+            {{--    success: function (result) {--}}
+            {{--    }--}}
+            {{--});--}}
             })
 
 
