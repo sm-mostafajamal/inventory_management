@@ -26,9 +26,9 @@ class Product extends Model
         "Others" => "others",
     ];
 
-    public function getAll()
+    public function getData($filters)
     {
-        return self::all();
+        return self::select($filters)->get();
     }
     public function insertData($data)
     {
@@ -42,7 +42,7 @@ class Product extends Model
 
     public function getById($id)
     {
-        return self::where('id', $id)->first();
+        return self::whereIn('id', $id)->get();
     }
     public function updateData($id, $data)
     {

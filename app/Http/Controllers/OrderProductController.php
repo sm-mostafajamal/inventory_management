@@ -9,9 +9,13 @@ class OrderProductController extends Controller
 {
     public function index(Request $request)
     {
-        $data["products"] = (new Product())->getAll();
+        $product = new Product();
+        $data["products"] = $product->getData(['id', 'product_name']);
         if($request->ajax()){
-            dd($request->all());
+            if(!empty($request['product_id'])) {
+                return response()->json($product->getById($request['product_id']));
+            }
+            return response()->json();
         }
         return view('order_product.index', $data);
     }
