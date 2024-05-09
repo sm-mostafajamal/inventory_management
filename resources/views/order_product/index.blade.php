@@ -45,7 +45,6 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table_body">
-
                                     </tbody>
                                 </table>
 
@@ -86,7 +85,7 @@
                     },
                     success: function(result) {
                         $('#table_body').html("")
-                        if((result.length)) {
+                        if ((result.length)) {
                             result.forEach(product => {
                                 let row = `<tr>
                                                 <td class="col-md-1 pr-md-1 text-center ">
@@ -97,36 +96,48 @@
                                                     </span>
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
-                                                    <input type="text" class="form-control" placeholder="Product Name"
+                                                    <input type="text" class="form-control disabled_input" placeholder="Product Name"
                                                         name="product_name" id="product_name" value="${product.product_name}" disabled>
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
-                                                    <input type="text" class="form-control" placeholder="Product Name"
-                                                        name="product_name" id="product_name" value="${product.price}" disabled>
+                                                    <input type="text" class="form-control product_price disabled_input" placeholder="Product Name"
+                                                        name="price" id="product_price_${product.id}" value="${product.price}" disabled>
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
-                                                    <input type="text" class="form-control" placeholder="Product Name"
-                                                        name="product_name" id="product_name" value="${product.quantity}" disabled>
+                                                    <input type="text" class="form-control product_quantity" placeholder="Product Name"
+                                                        name="quantity" id="product_quantity_${product.id}" value="${product.quantity}">
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
-                                                    <input type="text" class="form-control" placeholder="Product Name"
-                                                        name="product_name" id="product_name" value="${product.total}" disabled>
+                                                    <input type="text" class="form-control total_price disabled_input" placeholder="Product Name"
+                                                        name="total" id="total_price_${product.id}" value="${product.total}" disabled>
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
-                                                    <input type="text" class="form-control" placeholder="Product Name"
-                                                        name="product_name" id="product_name" value="${product.category}" disabled>
+                                                    <input type="text" class="form-control disabled_input" placeholder="Product Name"
+                                                        name="category" id="product_category" value="${product.category}" disabled>
                                                 </td>
                                             </tr>`;
-        
+
                                 $('#table_body').append(row)
-    
-                        });
+                                $('#product_quantity_'+product.id).on('keyup', () => {
+                                    product_price = $("#product_price_"+product.id).val();
+                                    product_quantity = $('#product_quantity_'+product.id)
+                                        .val();
+                                    $('#total_price_'+product.id).val(product_price *
+                                        product_quantity);
+                                })
+                                // let product_total_price = []
+                                // product_total_price.p($('#total_price_'+product.id).val());
+                                // // let total += product_total_price;
+
+                                // console.log(product_total_price)
+                            });
                         }
-                        
+
 
                     }
                 });
             })
+
 
 
         });

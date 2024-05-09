@@ -26,7 +26,12 @@ class Product extends Model
         "Others" => "others",
     ];
 
-    public function getData($filters)
+    public function getAll()
+    {
+        return self::all();
+    }
+
+    public function getDataByFilters($filters)
     {
         return self::select($filters)->get();
     }

@@ -20463,7 +20463,7 @@ Copyright (c) 2015 Daniel Eden
 
 }
 
-.total {
+.total, .disabled_input {
     color: #a4a4a4 !important;
     font-size: 1rem;
 }
