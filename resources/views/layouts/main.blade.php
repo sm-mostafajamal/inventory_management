@@ -41,7 +41,6 @@
 <div class="wrapper">
     <x-navbar/>
     <div class="main-panel">
-
         @yield('content')
     </div>
 </div>

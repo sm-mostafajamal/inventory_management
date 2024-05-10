@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li id="sales">
-                <a href="#">
+                <a href="{{ route('sales') }}">
                     <i class="fa-solid fa-dollar-sign"></i>
                     <p>Sales</p>
                 </a>

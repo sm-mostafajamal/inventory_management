@@ -12,11 +12,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
+                            <h2 class="title mt-4 mb-0" id="test">Order Product</h2>
+
                                 <div class="row">
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
-                                            <div class="container mt-5">
-                                                <select id="choices-multiple-remove-button" name="selected_products[]"
+                                            <div class="container select_product mt-5 mb-4">
+                                                <select id="choices-multiple-remove-button" name="selected_product_id[]"
                                                     placeholder="Select Products" multiple>
                                                     @foreach ($products as $product)
                                                         <option class="option" value={{ $product->id }}>
@@ -30,9 +32,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <h5 class="title mt-4" id="test">Product Information</h5>
-
                                 <table class="table col-md-12">
                                     <thead>
                                         <tr>
@@ -45,11 +44,12 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table_body">
+
                                     </tbody>
                                 </table>
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-fill btn-primary d-none" id="print_btn">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -85,8 +85,12 @@
                     },
                     success: function(result) {
                         $('#table_body').html("")
+                        let sum = 0
+
                         if ((result.length)) {
-                            result.forEach(product => {
+                            $('#print_btn').removeClass('d-none')
+                            $('#empty_select_list').addClass('d-none')
+                            result.forEach((product) => {
                                 let row = `<tr>
                                                 <td class="col-md-1 pr-md-1 text-center ">
                                                     <span class="mx-2 icons delete_product_icon" id="delete_product"
@@ -97,47 +101,66 @@
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control disabled_input" placeholder="Product Name"
-                                                        name="product_name" id="product_name" value="${product.product_name}" disabled>
+                                                        name="product_name[${product.id}]" id="product_name" value="${product.product_name}" readonly tabindex="-1">
                                                 </td>
+
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control product_price disabled_input" placeholder="Product Name"
-                                                        name="price" id="product_price_${product.id}" value="${product.price}" disabled>
+                                                        name="product_price[${product.id}]" id="product_price_${product.id}" value="${product.price}" readonly tabindex="-1">
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control product_quantity" placeholder="Product Name"
-                                                        name="quantity" id="product_quantity_${product.id}" value="${product.quantity}">
+                                                        name="quantity[${product.id}]" id="product_quantity_${product.id}" value="${product.quantity}">
                                                 </td>
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control total_price disabled_input" placeholder="Product Name"
-                                                        name="total" id="total_price_${product.id}" value="${product.total}" disabled>
+                                                        name="total_purchased_price[${product.id}]" id="total_price_${product.id}" value="${product.total}" readonly tabindex="-1">
                                                 </td>
+
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control disabled_input" placeholder="Product Name"
-                                                        name="category" id="product_category" value="${product.category}" disabled>
+                                                        name="category[${product.id}]" id="product_category" value="${product.category}" readonly tabindex="-1">
                                                 </td>
                                             </tr>`;
 
                                 $('#table_body').append(row)
                                 $('#product_quantity_'+product.id).on('keyup', () => {
-                                    product_price = $("#product_price_"+product.id).val();
-                                    product_quantity = $('#product_quantity_'+product.id)
+                                    let product_price = $("#product_price_"+product.id).val();
+                                    let product_quantity = $('#product_quantity_'+product.id)
                                         .val();
-                                    $('#total_price_'+product.id).val(product_price *
-                                        product_quantity);
+                                    let total_price = product_price * product_quantity;
+                                    $('#total_price_'+product.id).val(total_price);
                                 })
-                                // let product_total_price = []
-                                // product_total_price.p($('#total_price_'+product.id).val());
-                                // // let total += product_total_price;
 
-                                // console.log(product_total_price)
+                                $(`#product_quantity_${product.id}, .choices__inner, .choices__input, .choices__list, .choices__list choices__list--dropdown`).on("click keyup change",(e) => {
+                                    sum = 0
+                                    $('.total_price').each((id, el) => {
+                                        sum += Number($(el).val())
+                                        $('.bottom_price').text('Total Price '+sum)
+
+                                    })
+                                })
                             });
+                            let total_row = `
+                                    <tr>
+                                        <td class="text-center bottom_price" colspan="6" style="font-size: 1rem; font-weight: bolder"></td>
+                                    </tr>`;
+
+                            $('#table_body').append(total_row)
+                        }else {
+                            $('#print_btn').addClass('d-none')
+                            $('#empty_select_list').removeClass('d-none')
                         }
-
-
                     }
                 });
             })
 
+            let empty_select_list = `
+                                    <tr>
+                                        <td class="text-center bottom_price" id="empty_select_list" colspan="6" style="font-size: 1rem; font-weight: bolder">Please Select a Product</td>
+                                    </tr>`;
+
+            $('#table_body').append(empty_select_list)
 
 
         });

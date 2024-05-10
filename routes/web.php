@@ -5,6 +5,7 @@ use \App\Http\Controllers\ReportAndAnalyticsController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\ProductController;
 use \App\Http\Controllers\OrderProductController;
+use \App\Http\Controllers\SaleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,9 @@ Route::middleware('auth')->prefix('/')->group( function () {
     Route::match(['get', 'post'],'product-management/add', [ProductController::class, 'create'])->name('product.add');
 
     // Order Product
-    Route::get('order-product', [OrderProductController::class, 'index'])->name('order-product');
+    Route::match(['get', 'post'],'order-product', [OrderProductController::class, 'index'])->name('order-product');
     Route::post('order-product/purchased', [OrderProductController::class, 'store'])->name('order-product.store');
+
+    Route::match(['get', 'post'],'sales', [saleController::class, 'index'])->name('sales');
+
 });
