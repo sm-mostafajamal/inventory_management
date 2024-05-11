@@ -55,14 +55,14 @@
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Price</label>
-                                            <input type="text" class="form-control price" name="price" id="product_price"
+                                            <input type="number" class="form-control price" name="price" id="product_price"
                                                    placeholder="Product Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Quantity</label>
-                                            <input type="text" class="form-control quantity" name="quantity" id="product_quantity"
+                                            <input type="number" class="form-control quantity" name="quantity" id="product_quantity"
                                                    placeholder="Product Quantity">
                                         </div>
                                     </div>

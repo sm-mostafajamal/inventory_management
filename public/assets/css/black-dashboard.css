@@ -20479,3 +20479,8 @@ Copyright (c) 2015 Daniel Eden
 /*    color: #514B64;*/
 /*    min-height: 100vh*/
 /*}*/
+
+.pagination_total {
+    color: white !important;
+    font-weight: bolder;
+}

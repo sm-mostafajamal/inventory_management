@@ -15,7 +15,7 @@
                             <h2 class="title mt-4 mb-0" id="test">Order Product</h2>
 
                                 <div class="row">
-                                    <div class="col-md-4 pr-md-1">
+                                    <div class="test col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <div class="container select_product mt-5 mb-4">
                                                 <select id="choices-multiple-remove-button" name="selected_product_id[]"
@@ -132,7 +132,7 @@
                                     $('#total_price_'+product.id).val(total_price);
                                 })
 
-                                $(`#product_quantity_${product.id}, .choices__inner, .choices__input, .choices__list, .choices__list choices__list--dropdown`).on("click keyup change",(e) => {
+                                $(`#product_quantity_${product.id}, .choices__inner, .choices__input, .choices__list, .choices__list choices__list--dropdown, .test, .choices__list, choices__list--dropdown, .choices__list, .choices__item, .choices__item--choice`).on("click keyup change mouseover",(e) => {
                                     sum = 0
                                     $('.total_price').each((id, el) => {
                                         sum += Number($(el).val())
@@ -161,8 +161,6 @@
                                     </tr>`;
 
             $('#table_body').append(empty_select_list)
-
-
         });
     </script>
 @endsection

@@ -11,15 +11,31 @@ class Sale extends Model
     protected $table='sales';
     public $timestamps = false;
     protected $guarded=[];
+    const QUANTITY_LIMIT = 5;
+
     public function insertData($data)
     {
-        $this->create($data);
-        return true;
+        return $this->create($data);
     }
 
-    public function getAllDataWithProducts()
+    public function getAllDataWithProducts($paginate=null, $filter=[])
     {
-        return $this->join('products','products.id','=','sales.product_id')
-                    ->get();
+        $query = $this->query();
+
+        $query->join('products','products.id','=','sales.product_id');
+
+        if (!empty($filter['today_sales'])) {
+            $query->where('sales.created_at', 'like', '%' . $filter['today_sales'] . '%');
+        }
+
+        if (!empty($filter['start_of_month']) && !empty($filter['end_of_month'])) {
+            $query->whereBetween('sales.created_at', [$filter['start_of_month'], $filter['end_of_month']]);
+        }
+
+        if(!empty($paginate)) {
+            return $query->paginate($paginate);
+        }
+
+        return $query->get();
     }
 }

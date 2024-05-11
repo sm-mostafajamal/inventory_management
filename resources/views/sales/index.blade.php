@@ -17,6 +17,7 @@
                                 <table class="table col-md-12">
                                     <thead>
                                     <tr>
+                                        <th scope="col" class="text-center">Serial</th>
                                         <th scope="col" class="text-center">Product Name</th>
                                         <th scope="col" class="text-center">Product Category</th>
                                         <th scope="col" class="text-center">Product Ordered Quantity</th>
@@ -28,6 +29,7 @@
                                     <tbody id="table_body">
                                     @foreach($products as $product)
                                         <tr>
+                                            <td class="text-center">{{ $loop->index + 1 }}</td>
                                             <td class="text-center">{{ $product->product_name }}</td>
                                             <td class="text-center">{{ $product->category }}</td>
                                             <td class="text-center">{{ $product->ordered_quantity }}</td>
@@ -38,9 +40,14 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="paginate col-12 d-flex justify-content-between">
+                    <div class="pagination_total">Total Sales: {{ $products->total() }}</div>
+                    <div class="">{{ $products->links() }}</div>
                 </div>
             </form>
         </div>

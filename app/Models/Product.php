@@ -11,6 +11,9 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = [];
 
+    const PAGE_LIMIT = 5;
+
+
     public $product_category = [
         "Beverages" => "beverages",
         "Bakery" => "bakery",
@@ -26,14 +29,19 @@ class Product extends Model
         "Others" => "others",
     ];
 
-    public function getAll()
+    public function getAll($paginate=null)
     {
-        return self::all();
+        $query = $this->query();
+
+        if(!empty($paginate)) {
+            return $query->paginate($paginate);
+        }
+        return $query->get();
     }
 
     public function getDataByFilters($filters)
     {
-        return self::select($filters)->get();
+        return self::select($filters)->where('quantity', '>', 0 )->get();
     }
     public function insertData($data)
     {

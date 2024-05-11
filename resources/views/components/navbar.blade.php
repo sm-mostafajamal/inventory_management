@@ -25,12 +25,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-                <li class="search-bar input-group">
-                    <button class="btn btn-link" id="search-button" data-toggle="modal"
-                            data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                        <span class="d-lg-none d-md-block">Search</span>
-                    </button>
-                </li>
+{{--                <li class="search-bar input-group">--}}
+{{--                    <button class="btn btn-link" id="search-button" data-toggle="modal"--}}
+{{--                            data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>--}}
+{{--                        <span class="d-lg-none d-md-block">Search</span>--}}
+{{--                    </button>--}}
+{{--                </li>--}}
 {{--                <li class="dropdown nav-item">--}}
 {{--                    <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">--}}
 {{--                        <div class="notification d-none d-lg-block d-xl-block"></div>--}}
@@ -55,7 +55,7 @@
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="photo">
-                            <img src="{{ asset('assets') }}/img/anime3.png" alt="Profile Photo">
+                            <img src="{{ asset('assets') }}/img/{{Auth::user()->image}}" alt="Profile Photo">
                         </div>
                         <b class="caret d-none d-lg-block d-xl-block"></b>
                         <p class="d-lg-none">
@@ -63,13 +63,14 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
-                        <li class="nav-link"><a href="javascript:void(0)"
-                                                class="nav-item dropdown-item">Profile</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>
-                        </li>
-                        <li class="dropdown-divider"></li>
+{{--                        <li class="nav-link"><a href="javascript:void(0)"--}}
+{{--                                                class="nav-item dropdown-item">Profile</a></li>--}}
+{{--                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="dropdown-divider"></li>--}}
                         <li class="nav-link">
-                        <a href="{{ route('logout') }}" class="nav-item dropdown-item">Logout</a></li>
+                            <a href="{{ route('logout') }}" class="nav-item dropdown-item">Logout</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="separator d-lg-none"></li>

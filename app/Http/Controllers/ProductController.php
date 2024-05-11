@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    //
+
     public function index(Request $request, Product $product)
     {
-        $data['products'] = $product->getAll();
+        $data['products'] = $product->getAll(Product::PAGE_LIMIT);
         $data['product_categories'] = $product->product_category;
         if ($request->isMethod('POST') && $request?->action == 'delete') {
             if (!empty($request->product_id)) {
