@@ -35,7 +35,7 @@
                     <span class="show">SHOW</span>
                 </div>
                 <div class="pass">
-                    <a href="#">Forgot Password?</a>
+                    <span style="color:white">For Testing purpose [username: admin, Password: 123456]</span>
                 </div>
                 <div class="field">
                     <input type="submit" value="LOGIN">

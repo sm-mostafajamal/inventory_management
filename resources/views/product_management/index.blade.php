@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header button-header">
+                        <div class="card-header d-flex justify-content-between">
                             <h2 class="title">Product List</h2>
                             <a href="{{ route("product.add") }}">
                                 <input type="button" value="Add New Product" class="btn btn-fill btn-primary">
@@ -70,7 +70,7 @@
                                     </tr>
                                 @empty
                                     <tr class="text-center">
-                                        <td colspan="8">No data found!!!</td>
+                                        <td colspan="10">No data found!!!</td>
                                     </tr>
                                 @endforelse
 
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="paginate col-12 d-flex justify-content-between">
-                <div class="pagination_total">Total Sales: {{ $products->total() }}</div>
+                <div class="pagination_total">Total Available Products: {{ $products->total() }}</div>
                 <div class="">{{ $products->links() }}</div>
             </div>
         </div>
@@ -133,7 +133,7 @@
                         product_name: $('#product_name').val(),
                         price: $('.price').val(),
                         quantity: $('.quantity').val(),
-                        total: $('.total_price').val(),
+                        total: $('.total').val(),
                         category: $('#select_product').find(":selected").val()
                     }
                     $.ajax({
@@ -141,9 +141,16 @@
                         type: "POST",
                         data: data,
                         success: function (result) {
-                            if(result) {
+                            if(result === 'success') {
                                   window.location.href = "{{ route('product-management') }}"
                             }
+                        },
+                        error: function (errors) {
+                            errors = JSON.parse(JSON.stringify(errors.responseJSON))
+                            $.each(errors,(id, message) => {
+                                $("."+id+"_error").text(message)
+                                $("#"+id).addClass('is-invalid')
+                            })
                         }
                     });
                 });

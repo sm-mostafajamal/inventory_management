@@ -16,7 +16,6 @@ class OrderProductController extends Controller
     }
     public function index(Request $request)
     {
-        $product = new Product();
         $data["products"] = $this->product->getDataByFilters(['id', 'product_name']);
         if($request->ajax()){
             if(!empty($request['product_id'])) {

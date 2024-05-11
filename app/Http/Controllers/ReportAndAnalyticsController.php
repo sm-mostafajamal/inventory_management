@@ -24,7 +24,6 @@ class ReportAndAnalyticsController extends Controller
             'end_of_month' => Carbon::now()->endOfMonth()->toDateString(),
         ];
         $filters_for_today = [
-            'count' => true,
             'today_sales' => Carbon::now()->toDateString()
         ];
 

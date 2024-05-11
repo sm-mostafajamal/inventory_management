@@ -10,47 +10,56 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    protected $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
 
     public function login()
     {
         return view('login.index');
     }
 
-    public function show(User $user)
+    public function show()
     {
-        $data['userObj'] = $user->getAll(\auth()->id());
+        $data['userObj'] = $this->user->getAll(\auth()->id());
 
         return view('user_management.index', $data);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        $input = $request->except(['_token', 'photo']);
+        $input = $request->all();
         $input['image'] = $this->uploadImage($request) ?? "";
-        $user->updateByUserId(\auth()->id(), $input);
+        $validator = $this->userValidation($input, 'update');
+
+        if(!empty($input['previous_password']) && !password_verify($input['previous_password'], Auth::user()->getAuthPassword())) {
+            return redirect()->back()->withInput()->withErrors(["previous_password" => "Previous password did  not matched"]);
+        }elseif ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        if(empty($input['password'])) {
+            unset($input['_token'], $input['photo'], $input['previous_password'],$input['password'], $input['confirm_password']);
+        } else {
+            $input['password'] = Hash::make($input['password']);
+            unset($input['_token'], $input['photo'], $input['previous_password'], $input['confirm_password']);
+        }
+
+        $this->user->updateByUserId(\auth()->id(), $input);
+
         return redirect()->back()->with(['success' => 'Updated Successfully']);
     }
 
-    public function add(Request $request, User $user)
+    public function add(Request $request)
     {
         try {
             $input = $request->except('_token');
 
             if ($request->isMethod('POST')) {
-                $rules = [
-                    'name' => 'required|string',
-                    'email' => 'sometimes|email',
-                    'username' => 'required|min:6|unique:users,username',
-                    'phone' => 'required|min:11',
-                    'password' => 'required|min:4',
-                    'confirm_password' => 'required|min:4|same:password',
-                ];
-
-                $messages = [
-                    'confirm_password.same' => 'Password Confirmation should match the Password',
-                ];
-
-                $validator = Validator::make($input, $rules, $messages);
+                $validator = $this->userValidation($input);
 
                 if ($validator->fails()) {
                     return redirect()->back()->withInput()->withErrors($validator->errors());
@@ -58,7 +67,7 @@ class UserController extends Controller
 
                 $input['password'] = Hash::make($input['password']);
                 $input['image'] = $this->uploadImage($request);
-                $user->addNewUser($input);
+                $this->user->addNewUser($input);
                 return redirect()->back()->with(['success' => 'User Created Successfully']);
 
             }
@@ -99,4 +108,39 @@ class UserController extends Controller
         }
     }
 
+    public function userValidation($input, $from=null)
+    {
+        $rules = [
+            'name' => 'required|string',
+            'email' => 'sometimes|email',
+            'username' => 'required|min:5|unique:users,username,' . \auth()->id(),
+            'phone' => 'sometimes|min:11',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|min:6|same:password',
+        ];
+
+        if (!empty($from) && !empty($input['password']) && !empty($input['confirm_password'])) {
+            $rules = [
+                'name' => 'required|string',
+                'email' => 'sometimes|email',
+                'username' => 'required|min:5|unique:users,username,' . \auth()->id(),
+                'phone' => 'sometimes|min:11',
+                'password' => 'sometimes|min:6',
+                'confirm_password' => 'sometimes|min:6|same:password',
+            ];
+        } elseif (!empty($from)) {
+            $rules = [
+                'name' => 'required|string',
+                'email' => 'sometimes|email',
+                'username' => 'required|min:5|unique:users,username,' . \auth()->id(),
+                'phone' => 'sometimes|min:11',
+            ];
+        }
+
+        $messages = [
+            'confirm_password.same' => 'Password Confirmation should match the Password',
+        ];
+
+        return Validator::make($input, $rules, $messages);
+    }
 }

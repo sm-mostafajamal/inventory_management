@@ -15,6 +15,8 @@
                            id="sr_name"
                            name="sr_name">
                 </div>
+                <span class="sr_name_error error"></span>
+
                 <div class="form-group">
                     <label>Company Name</label>
                     <input type="text"
@@ -23,6 +25,8 @@
                            id="sr_company"
                            name="sr_company">
                 </div>
+                <span class="sr_company_error error"></span>
+
                 <div class="form-group">
                     <label>Phone Number</label>
                     <input type="tel"
@@ -31,6 +35,8 @@
                            id="sr_phone"
                            name="sr_phone">
                 </div>
+                <span class="sr_phone_error error"></span>
+
                 <div class="form-group">
                     <label>Product Name</label>
                     <input type="text"
@@ -39,6 +45,8 @@
                            name="product_name"
                            id="product_name">
                 </div>
+                <span class="product_name_error error"></span>
+
                 <div class="form-group">
                     <label>Product Price</label>
                     <input type="text"
@@ -46,6 +54,8 @@
                            name="price"
                            placeholder="Product Price">
                 </div>
+                <span class="price_error error"></span>
+
                 <div class="form-group">
                     <label>Product Quantity</label>
                     <input type="text"
@@ -53,14 +63,17 @@
                            name="quantity"
                            placeholder="Product Quantity">
                 </div>
+                <span class="quantity_error error"></span>
+
                 <div class="form-group">
                     <label>Total Price</label>
                     <input type="text"
                            class="form-control total"
-                           name="total_price"
-                           placeholder="Total Price" disabled>
-                    <input type="hidden" class="total_price" name="total">
+                           name="total"
+                           placeholder="Total Price" readonly>
                 </div>
+                <span class="total_price_error error"></span>
+
                 <div class="form-group">
                     <label>Product Category</label>
                     <select class="form-control" id="select_product" required>
@@ -69,8 +82,10 @@
                         @endforeach
                     </select>
                     <input type="hidden" name="category" id="product_category">
-                    <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="product_id" id="product_id" value="{{ $product->id ?? '' }}">
                 </div>
+                <span class="select_product_error error"></span>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

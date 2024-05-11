@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header button-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h2 class="title">Add Product</h2>
                                 <a href="{{ route('product-management') }}">
                                     <input type="button" value="Back" class="btn btn-fill btn-primary">
@@ -22,24 +22,33 @@
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>SR Name</label>
-                                            <input type="text" class="form-control" placeholder="SR Name" name="sr_name"
+                                            <input type="text" class="form-control {{$errors->has('sr_name') ? 'is-invalid' : '' }}" placeholder="SR Name" name="sr_name"
                                                    value="{{ old('sr_name') }}">
                                         </div>
+                                        @if($errors->has('sr_name'))
+                                            <div class="error">{{ $errors->first('sr_name') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Company Name</label>
-                                            <input type="text" class="form-control" placeholder="Company Name"
+                                            <input type="text" class="form-control {{$errors->has('sr_company') ? 'is-invalid' : '' }}" placeholder="Company Name"
                                                    name="sr_company"
                                                    value="{{ old('sr_company') }}">
                                         </div>
+                                        @if($errors->has('sr_company'))
+                                            <div class="error">{{ $errors->first('sr_company') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 pl-md-1">
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input type="tel" class="form-control" placeholder="Phone Number"
+                                            <input type="tel" class="form-control {{$errors->has('sr_phone') ? 'is-invalid' : '' }}" placeholder="Phone Number"
                                                    name="sr_phone" value="{{ old('sr_phone') }}">
                                         </div>
+                                        @if($errors->has('sr_phone'))
+                                            <div class="error">{{ $errors->first('sr_phone') }}</div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -48,37 +57,47 @@
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Product Name</label>
-                                            <input type="text" class="form-control" placeholder="Product Name"
+                                            <input type="text" class="form-control {{$errors->has('product_name') ? 'is-invalid' : '' }}" placeholder="Product Name"
                                                    name="product_name" id="product_name" value="{{ old('product_name') }}">
+                                            @if($errors->has('product_name'))
+                                                <div class="error">{{ $errors->first('product_name') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Price</label>
-                                            <input type="number" class="form-control price" name="price" id="product_price"
+                                            <input type="number" class="form-control price {{$errors->has('price') ? 'is-invalid' : '' }}" name="price" id="product_price"
                                                    placeholder="Product Price">
                                         </div>
+                                        @if($errors->has('price'))
+                                            <div class="error">{{ $errors->first('price') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 px-md-1">
                                         <div class="form-group">
                                             <label>Product Quantity</label>
-                                            <input type="number" class="form-control quantity" name="quantity" id="product_quantity"
+                                            <input type="number" class="form-control quantity {{$errors->has('quantity') ? 'is-invalid' : '' }}" name="quantity" id="product_quantity"
                                                    placeholder="Product Quantity">
                                         </div>
+                                        @if($errors->has('quantity'))
+                                            <div class="error">{{ $errors->first('quantity') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Total Price</label>
-                                            <input type="text" class="form-control total" name="total"
-                                                   placeholder="Total Price" disabled>
-
-                                            <input type="hidden" class="total_price" name="total">
+                                            <input type="text" class="form-control total {{$errors->has('total') ? 'is-invalid' : '' }}" name="total"
+                                                   placeholder="Total Price" readonly>
                                         </div>
+                                        @if($errors->has('total'))
+                                            <div class="error">{{ $errors->first('total') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 pr-md-1">
                                         <div class="form-group">
                                             <label>Product Category</label>
-                                            <select class="form-control" id="select_product" required>
+                                            <select class="form-control {{$errors->has('select_product') ? 'is-invalid' : '' }}" id="select_product" required>
                                                 <option selected disabled>choose</option>
                                                 @foreach($product_categories as $category => $v)
                                                     <option class="option" value="{{ $v }}">{{$category}}</option>
@@ -133,7 +152,6 @@
                 product_price = $(".price").val();
                 product_quantity = $(".quantity").val();
                 $('.total').val(product_price * product_quantity);
-                $('.total_price').val(product_price * product_quantity);
             })
 
             $("#product_img").change((e) => {
