@@ -58,7 +58,6 @@
             </form>
         </div>
     </div>
-    @include('modals.confirmation_modal')
 
     <script>
         $(document).ready(function() {
@@ -91,11 +90,9 @@
                             $('#print_btn').removeClass('d-none')
                             $('#empty_select_list').addClass('d-none')
                             result.forEach((product) => {
-                                let row = `<tr>
+                                let row = `<tr id="product_row_${product.id}">
                                                 <td class="col-md-1 pr-md-1 text-center ">
-                                                    <span class="mx-2 icons delete_product_icon" id="delete_product"
-                                                        data-product_id="" data-bs-toggle="modal"
-                                                        data-bs-target="#confirmModal">
+                                                    <span class="mx-2 icons delete_product_icon" id="delete_product_${product.id}">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </span>
                                                 </td>
@@ -132,13 +129,16 @@
                                     $('#total_price_'+product.id).val(total_price);
                                 })
 
-                                $(`#product_quantity_${product.id}, .choices__inner, .choices__input, .choices__list, .choices__list choices__list--dropdown, .test, .choices__list, choices__list--dropdown, .choices__list, .choices__item, .choices__item--choice`).on("click keyup change mouseover",(e) => {
+                                $(`#product_quantity_${product.id}, .card-body, .choices__inner, .choices__input, .choices__list, .choices__list choices__list--dropdown, .test, .choices__list, choices__list--dropdown, .choices__list, .choices__item, .choices__item--choice`).on("click keyup change mouseover",(e) => {
                                     sum = 0
                                     $('.total_price').each((id, el) => {
                                         sum += Number($(el).val())
                                         $('.bottom_price').text('Total Price '+sum)
 
                                     })
+                                })
+                                $('#delete_product_'+product.id).click(()=> {
+                                    $("#product_row_"+product.id).remove()
                                 })
                             });
                             let total_row = `
