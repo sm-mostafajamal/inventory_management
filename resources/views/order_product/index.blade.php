@@ -35,7 +35,7 @@
                                 <table class="table col-md-12">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-center">Action</th>
+{{--                                            <th scope="col" class="text-center">Action</th>--}}
                                             <th scope="col" class="text-center">Product Name</th>
                                             <th scope="col" class="text-center">Product Price</th>
                                             <th scope="col" class="text-center">Product Quantity</th>
@@ -91,11 +91,6 @@
                             $('#empty_select_list').addClass('d-none')
                             result.forEach((product) => {
                                 let row = `<tr id="product_row_${product.id}">
-                                                <td class="col-md-1 pr-md-1 text-center ">
-                                                    <span class="mx-2 icons delete_product_icon" id="delete_product_${product.id}">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </span>
-                                                </td>
                                                 <td class="col-md-2 pr-md-1">
                                                     <input type="text" class="form-control disabled_input" placeholder="Product Name"
                                                         name="product_name[${product.id}]" id="product_name" value="${product.product_name}" readonly tabindex="-1">
