@@ -1,1 +1,1 @@
-CREATE TABLE `inventory_management`.`sales` (`id` INT NOT NULL AUTO_INCREMENT , `product_id` INT NOT NULL , `product_price` DOUBLE NOT NULL DEFAULT '0' , `ordered_quantity` INT NOT NULL DEFAULT '0' , `product_total_amount` DECIMAL NOT NULL DEFAULT '0' , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+http://www.inventory-management.000.pe/login
