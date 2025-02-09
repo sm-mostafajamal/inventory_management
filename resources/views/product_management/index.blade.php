@@ -56,7 +56,7 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <img src="{{ !empty($product->image) ? asset('assets/img/' . $product->image) : asset('assets/img/no_img.png') }}"
+                                            <img src="{{ !empty($product->image) ? 'assets/img/' . $product->image : 'assets/img/no_img.png' }}"
                                                  style="width: 100px"/>
                                         </td>
                                         <td class="text-center">{{ $product->product_name }}</td>

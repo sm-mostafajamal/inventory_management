@@ -104,7 +104,7 @@
                                     <div class="block block-four"></div>
                                     <a href="javascript:void(0)">
 
-                                        <img src="{{ asset('assets/img/anime3.png') }}" class="upload_profile_pic" style="width: 150px">
+                                        <img src="assets/img/anime3.png" class="upload_profile_pic" style="width: 150px">
 
                                         <input type="file" name="photo" class="user_img" style="display: none;" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
                                         <h4 class="title" style="margin-top: 1rem"></h4>

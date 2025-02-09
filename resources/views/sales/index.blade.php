@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="paginate col-12 d-flex justify-content-between">
-                    <div class="pagination_total">Total Sales: {{ $products->total() }}</div>
+                    <div class="pagination_total">Total Sold: {{ $products->total() }}</div>
                     <div class="">{{ $products->links() }}</div>
                 </div>
             </form>

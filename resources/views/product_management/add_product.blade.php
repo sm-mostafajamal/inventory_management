@@ -123,7 +123,7 @@
                                     <div class="block block-three"></div>
                                     <div class="block block-four"></div>
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('assets') }}/img/upload2.png" id="upload_img" style="width: 150px">
+                                        <img src="assetsimg/upload2.png" id="upload_img" style="width: 150px">
                                         <input type="file" name="photo" id="product_img" style="display: none;" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
                                         <h4 class="title" style="margin-top: 1rem" id="product_title"></h4>
                                         <h4 class="title" style="margin-top: 1rem" id="price"></h4>

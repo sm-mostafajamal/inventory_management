@@ -119,7 +119,7 @@
                                     <div class="block block-four"></div>
                                     <a href="javascript:void(0)">
                                         <img
-                                            src="{{ !empty($userObj->image) ? asset('assets/img/' . $userObj->image) : asset('assets/img/anime3.png')}}"
+                                            src="{{ !empty($userObj->image) ? 'assets/img/' . $userObj->image : 'assets/img/anime3.png'}}"
                                             id="upload_profile_pic" style="width: 150px">
                                         <input type="file" name="photo" id="user_img" style="display: none;"
                                                accept="image/x-png,image/gif,image/jpeg,image/jpg"/>
